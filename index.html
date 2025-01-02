@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="al:android:url" content="openapp://com.example.hibank">
+	<meta property="al:android:url" content="openapp://com.istuat.hibank">
+	<meta property="al:android:url" content="openapp://com.hibank.mobile">
+    <meta property="al:ios:url" content="openapp://com.ist.hibank">
+	<meta property="al:ios:url" content="openapp://com.ist-uat.hibank">
+	<meta property="al:ios:url" content="openapp://com.hibank.mobile">
+    <title>Hibank App</title>
+    <script>
+		var endpoint = getQueryParamName('name')
+	    var deepLink = "openapp://com.example.hibank/"+ endpoint;
+		
+	    const playStore = 'https://play.google.com/store/apps/details?id=com.hibank.mobile';
+		const appStore = 'https://apps.apple.com/id/app/hi-by-hibank/id6474590911?l=id';
+
+	    function openDeepLink() {
+	        setTimeout(function () {
+	            const userOs = getMobileOS();
+	            if (userOs == "Apple") {
+	                window.location.replace(appStore);
+	            } else {
+	                window.location.replace(playStore);
+	            }
+	        }, 1000);
+
+	        window.location.replace(deepLink);
+	    }
+
+		const getMobileOS = () => {
+		 	var userAgent = window.navigator.userAgent,
+		     	platform = window.navigator.platform,
+		     	macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+		      	windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+		      	iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+		      	os = "Other";
+
+			if (macosPlatforms.indexOf(platform) !== -1) {
+				os = 'Apple';
+			} else if (iosPlatforms.indexOf(platform) !== -1) {
+			    os = 'Apple';
+			} else if (windowsPlatforms.indexOf(platform) !== -1) {
+			    os = 'Windows';
+			} else if (/Android/.test(userAgent)) {
+			    os = 'Android';
+			} else if (!os && /Linux/.test(platform)) {
+			    os = 'Linux';
+			}
+
+		 	return os;
+		}
+
+		// Mendapatkan query parameter dari URL
+		function getQueryParamName(name) {
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			return urlParams.get(name);
+		}
+
+	    openDeepLink();
+	</script>
+
+</head>
+<body>
+    <h1>Hibank</h1>
+</body>
+</html>
