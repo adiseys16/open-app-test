@@ -20,17 +20,17 @@
 	    function openDeepLink() {
 			console.log("openDeepLink::endpoint ==>", endpoint);
 			console.log("openDeepLink::deepLink ==>", deepLink);
-			
-	        // setTimeout(function () {
-	        //     const userOs = getMobileOS();
-	        //     if (userOs == "Apple") {
-	        //         window.location.replace(appStore);
-	        //     } else {
-	        //         window.location.replace(playStore);
-	        //     }
-	        // }, 1000);
 
-	        // window.location.replace(deepLink);
+	        setTimeout(function () {
+	            const userOs = getMobileOS();
+	            if (userOs == "Apple") {
+	                window.location.replace(appStore);
+	            } else {
+	                window.location.replace(playStore);
+	            }
+	        }, 1000);
+
+	        window.location.replace(deepLink);
 	    }
 
 		const getMobileOS = () => {
