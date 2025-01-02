@@ -18,16 +18,18 @@
 		const appStore = 'https://apps.apple.com/id/app/hi-by-hibank/id6474590911?l=id';
 
 	    function openDeepLink() {
-	        setTimeout(function () {
-	            const userOs = getMobileOS();
-	            if (userOs == "Apple") {
-	                window.location.replace(appStore);
-	            } else {
-	                window.location.replace(playStore);
-	            }
-	        }, 1000);
+			console.log("openDeepLink::endpoint ==>", endpoint);
+			console.log("openDeepLink::deepLink ==>", deepLink);
+	        // setTimeout(function () {
+	        //     const userOs = getMobileOS();
+	        //     if (userOs == "Apple") {
+	        //         window.location.replace(appStore);
+	        //     } else {
+	        //         window.location.replace(playStore);
+	        //     }
+	        // }, 1000);
 
-	        window.location.replace(deepLink);
+	        // window.location.replace(deepLink);
 	    }
 
 		const getMobileOS = () => {
