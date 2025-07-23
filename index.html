@@ -41,17 +41,17 @@
 
 			window.location.href = deepLink;
 
-			setTimeout(function () {
-				var elapsed = new Date().getTime() - now;
-				if (elapsed < 2000) {
-				const os = getMobileOS();
-				if (os === 'Apple') {
-					window.location.href = appStore;
-				} else {
-					window.location.href = playStore;
-				}
-				}
-			}, 4000);
+			// setTimeout(function () {
+			// 	var elapsed = new Date().getTime() - now;
+			// 	if (elapsed < 2000) {
+			// 	const os = getMobileOS();
+			// 	if (os === 'Apple') {
+			// 		window.location.href = appStore;
+			// 	} else {
+			// 		window.location.href = playStore;
+			// 	}
+			// 	}
+			// }, 4000);
 		}
 
 		const getMobileOS = () => {
