@@ -14,24 +14,43 @@
 		const playStore = 'https://play.google.com/store/apps/details?id=com.hibank.mobile';
 		const appStore = 'https://apps.apple.com/id/app/hi-by-hibank/id6474590911?l=id';
 
-	    function openDeepLink() {
-			var endpoint = getQueryParamName('name')
-		    // var deepLink = "openapp://com.example.hibank/?name="+ endpoint;
-			var deepLink = "https://hibank.co.id/?name="+ endpoint;
-			console.log("openDeepLink::endpoint ==>", endpoint);
-			console.log("openDeepLink::deepLink ==>", deepLink);
+	    // function openDeepLink() {
+		// 	var endpoint = getQueryParamName('name')
+		//     // var deepLink = "openapp://com.example.hibank/?name="+ endpoint;
+		// 	var deepLink = "https://hibank.co.id/?name="+ endpoint;
+		// 	console.log("openDeepLink::endpoint ==>", endpoint);
+		// 	console.log("openDeepLink::deepLink ==>", deepLink);
 
-	        setTimeout(function () {
-	            const userOs = getMobileOS();
-	            if (userOs == "Apple") {
-	                window.location.replace(appStore);
-	            } else {
-	                window.location.replace(playStore);
-	            }
-	        }, 1000);
+	    //     setTimeout(function () {
+	    //         const userOs = getMobileOS();
+	    //         if (userOs == "Apple") {
+	    //             window.location.href(appStore);
+	    //         } else {
+	    //             window.location.href(playStore);
+	    //         }
+	    //     }, 1000);
 
-	        window.location.replace(deepLink);
-	    }
+	    //     window.location.href(deepLink);
+	    // }
+		function openDeepLink() {
+			var endpoint = getQueryParamName('name');
+			var deepLink = "openapp://com.hibank.mobile/home?name=" + endpoint;
+
+			var now = new Date().getTime();
+			setTimeout(function () {
+				var elapsed = new Date().getTime() - now;
+				if (elapsed < 2000) {
+				const os = getMobileOS();
+				if (os === 'Apple') {
+					window.location.href = appStore;
+				} else {
+					window.location.href = playStore;
+				}
+				}
+			}, 1500);
+
+			window.location.href = deepLink;
+		}
 
 		const getMobileOS = () => {
 		 	var userAgent = window.navigator.userAgent,
